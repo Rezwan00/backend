@@ -6,6 +6,7 @@ const morgan = require('morgan')
 const app = express()
 
 app.use(express.json())
+app.use(express.static('dist'))
 
 
 morgan.token('body', (req) => JSON.stringify(req.body))
@@ -105,3 +106,8 @@ app.post('/api/persons', (req, res) => {
     res.json(person)
 })
 
+const path = require('path')
+
+app.get('/api/person', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+})
