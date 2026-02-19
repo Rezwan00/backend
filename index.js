@@ -108,6 +108,6 @@ app.post('/api/persons', (req, res) => {
 
 const path = require('path')
 
-app.get('/api/person', (req, res) => {
+app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
